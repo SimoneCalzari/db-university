@@ -113,3 +113,19 @@ ORDER BY
 
 7. Selezionare il voto medio di superamento d'esame per ogni corso, con anche i dati
 del corso di laurea associato, ordinati per media voto decrescente
+-Studente1
+SELECT
+`degrees`.`name` AS `corso_laurea`,
+`courses`.`name` AS `esame`,
+AVG(`exam_student`.`vote`) AS `voto_medio`
+FROM
+    `degrees`
+INNER JOIN `courses` 
+ON `degrees`.`id` = `courses`.`degree_id`
+INNER JOIN `exams` 
+ON `courses`.`id` = `exams`.`course_id`
+INNER JOIN `exam_student` 
+ON `exam_student`.`exam_id` = `exams`.`id`
+WHERE `exam_student`.`vote` > 18
+GROUP BY `courses`.`id`
+ORDER BY `voto_medio` DESC;
