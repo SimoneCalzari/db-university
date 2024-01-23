@@ -80,7 +80,8 @@ ORDER BY
 
 
 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
--Soluzione1SELECT
+-Soluzione1
+SELECT
     `degrees`.`name`,
     `courses`.`name`,
     `teachers`.`name`,
